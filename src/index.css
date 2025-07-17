@@ -1,96 +1,202 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind screens;
-@tailwind typography;
-@tailwind forms;
-@tailwind aspect-ratio;
-
-@layer components {
-  .all-\[unset\] {
-    all: unset;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 15, 23, 42;
+  --background-end-rgb: 6, 78, 59;
+}
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+html {
+  scroll-behavior: smooth;
+}
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom right,
+    rgb(var(--background-start-rgb)),
+    rgb(var(--background-end-rgb))
+  );
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
 
-    --card: transparent;
-    --card-foreground: 222.2 47.4% 11.2%;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10b981, #06b6d4);
+  border-radius: 4px;
+}
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #059669, #0891b2);
+}
 
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 215 20.2% 65.1%;
-
-    --radius: 0.5rem;
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
-
-  .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
-
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
-
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
-
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
-
-    --card: transparent;
-    --card-foreground: 213 31% 91%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
-
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
   }
+  50% {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+  }
+}
 
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Utility Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #10b981, #06b6d4, #3b82f6);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Focus States */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-transparent;
+}
+
+/* Button Hover Effects */
+.btn-hover {
+  @apply transition-all duration-300 ease-out hover:scale-105 active:scale-95;
+}
+
+/* Card Hover Effects */
+.card-hover {
+  @apply transition-all duration-500 ease-out hover:scale-105 hover:shadow-2xl;
+}
+
+/* Text Selection */
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: white;
+}
+
+/* Loading States */
+.loading {
+  @apply animate-pulse bg-gray-300;
+}
+
+/* Responsive Typography */
+.text-responsive {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl;
+}
+
+/* Gradient Borders */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+  padding: 1px;
+  border-radius: 0.5rem;
+}
+
+.gradient-border > * {
+  background: inherit;
+  border-radius: inherit;
+}
+
+/* Custom Focus for Form Elements */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: #10b981;
+  ring-offset: 2px;
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-float,
+  .animate-pulse-glow {
+    animation: none;
   }
 }

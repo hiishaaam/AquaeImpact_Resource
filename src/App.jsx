@@ -1,149 +1,175 @@
-import Button from "@/components/ui/button";
-import Card, { CardContent } from "@/components/ui/card";
-import React from "react";
+import React from 'react';
+import Navbar from './components/ui/navbar';
+import Hero from './components/ui/hero';
+import BlogCard from './components/ui/blog-card';
+import Footer from './components/ui/footer';
+import Button from './components/ui/button';
+import Card, { CardContent } from './components/ui/card';
 
 const navigationItems = [
-  { name: "Home", active: true },
+  { name: "Home", active: false },
   { name: "Who we are", active: false },
   { name: "What we do", active: false },
-  { name: "Resources", active: false },
+  { name: "Resources", active: true },
 ];
 
-const blogCards = [
-  { id: 1, position: "top-[371px] left-[215px]" },
-  { id: 2, position: "top-[257px] left-[561px]" },
-  { id: 3, position: "top-[391px] left-[912px]" },
-  { id: 4, position: "top-[849px] left-[215px]" },
-  { id: 5, position: "top-[735px] left-[562px]" },
-  { id: 6, position: "top-[874px] left-[914px]" },
+const blogPosts = [
+  {
+    id: 1,
+    title: "Another Response to Global Warming",
+    excerpt: "Exploring innovative approaches to address climate change and global warming challenges.",
+    author: "Environmental Research Team",
+    date: "September 20, 2024",
+    readTime: "11:24 AM",
+    category: "Journals",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 2,
+    title: "A way out of Carbon maze – 'Towards a commonsense understanding of Carbon'.",
+    excerpt: "Breaking down the complexities of carbon emissions and finding practical solutions for carbon management.",
+    author: "Carbon Research Institute",
+    date: "September 20, 2024",
+    readTime: "11:21 AM",
+    category: "Journals",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 3,
+    title: "The Development Trap",
+    excerpt: "Analyzing the challenges and paradoxes in sustainable development and economic growth.",
+    author: "Development Studies Center",
+    date: "September 20, 2024",
+    readTime: "11:17 AM",
+    category: "Journals",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 4,
+    title: "Sitting In The hotseat",
+    excerpt: "Examining the urgent challenges facing environmental leadership and decision-making in crisis situations.",
+    author: "Leadership Institute",
+    date: "September 20, 2024",
+    readTime: "11:14 AM",
+    category: "Journals",
+    image: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 5,
+    title: "Those Killer Robots",
+    excerpt: "Investigating the environmental and ethical implications of autonomous systems and artificial intelligence.",
+    author: "AI Ethics Research",
+    date: "September 20, 2024",
+    readTime: "11:12 AM",
+    category: "Journals",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 6,
+    title: "Towards an Informed Water Vision",
+    excerpt: "Developing comprehensive strategies for sustainable water management and conservation.",
+    author: "Water Resources Institute",
+    date: "September 20, 2024",
+    readTime: "11:10 AM",
+    category: "Journals",
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  }
 ];
-
-const footerLinks = [
-  "Home",
-  "Who We Are",
-  "What We Do",
-  "Resources",
-  "Green Credits",
-];
-
-const usefulLinks = ["Disclaimer", "Privacy Policy"];
 
 const Resource = () => {
   return (
-    <div className="bg-transparent flex flex-row justify-center w-full">
-      <div className="w-[1466px] h-[2828px]">
-        <div className="relative h-[2828px]">
-          <div className="absolute w-[1440px] h-[2728px] top-[100px] left-0">
-            <div className="h-[1010px] top-0 bg-blend-hard-light bg-[url(/desktop-17.png)] bg-cover bg-[50%_50%] absolute w-[1440px] left-0">
-              <div className="absolute w-[596px] top-[213px] left-[423px] [text-shadow:0px_4px_10px_#000000] [font-family:'Thasadith-Regular',Helvetica] font-normal text-[#97edd2] text-[110px] tracking-[-5.50px] leading-[125px] whitespace-nowrap">
-                RESOURCES
-              </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900">
+      {/* Navigation */}
+      <Navbar 
+        navigationItems={navigationItems}
+        ctaText="Green Credits"
+      />
+
+      {/* Hero Section */}
+      <Hero 
+        title="RESOURCES"
+        subtitle="Discover cutting-edge insights, research, and innovations in environmental sustainability and green technology"
+        ctaText="Explore Resources"
+        backgroundImage="/resources.jpeg"
+      />
+
+      {/* Blog Section */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm mb-6">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full mr-2 animate-pulse" />
+              <span className="text-emerald-400 text-sm font-medium">Latest Insights</span>
             </div>
-
-            <div className="bg-white rounded-[180px] w-[1440px] mt-[609px]">
-              <div className="[font-family:'Wittgenstein-Medium',Helvetica] font-medium text-[#00d2ac] text-[64px] tracking-[1.28px] leading-[38px] text-center mt-8 mb-24">
-                Our Blogs
-              </div>
-              <div className="grid grid-cols-3 gap-8 justify-items-center mt-24">
-                {blogCards.map((card, idx) => (
-                  <Card
-                    key={card.id}
-                    className={`w-80 h-[423px] bg-[#147866] rounded-[30px] border-0
-                      ${idx === 1 ? "-mt-12" : ""}  // Move the center card in the first row up
-                    `}
-                  >
-                    <CardContent className="p-0 w-full h-full"></CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <footer className="h-[680px] top-[2048px] bg-[#0b453b] absolute w-[1440px] left-0">
-              <div className="w-[324px] top-[133px] left-[100px] text-[85px] tracking-[-1.70px] absolute [font-family:'Work_Sans-Medium',Helvetica] font-medium text-white leading-[75px] whitespace-nowrap">
-                <span className="tracking-[-1.45px]">
-                  logo
-                  <br />
-                </span>
-
-                <span className="text-[35px] tracking-[-0.24px]">EMAIL</span>
-              </div>
-
-              <div className="absolute w-[259px] top-32 left-[720px] [font-family:'Work_Sans-Medium',Helvetica] font-medium text-transparent text-[35px] tracking-[-0.70px] leading-[75px]">
-                <span className="text-[#48ffd4] tracking-[-0.24px]">
-                  Links
-                  <br />
-                </span>
-
-                {footerLinks.map((link, index) => (
-                  <span
-                    key={index}
-                    className="text-white tracking-[-0.24px] block"
-                  >
-                    {link}
-                    <br />
-                  </span>
-                ))}
-              </div>
-
-              <div className="absolute w-[252px] top-[125px] left-[1088px] [font-family:'Work_Sans-Medium',Helvetica] font-medium text-transparent text-[35px] tracking-[-0.70px] leading-[75px]">
-                <span className="text-[#48ffd4] tracking-[-0.24px]">
-                  Useful Links
-                  <br />
-                </span>
-
-                {usefulLinks.map((link, index) => (
-                  <span
-                    key={index}
-                    className="text-white tracking-[-0.24px] block"
-                  >
-                    {link}
-                    <br />
-                  </span>
-                ))}
-              </div>
-            </footer>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Our <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">Blog</span>
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              Learn how our solutions drive sustainable economic growth while supporting environmental restoration. Stay updated on innovations shaping a greener future.
+            </p>
           </div>
 
-          <header className="absolute w-[1466px] h-[100px] top-0 left-0 bg-blend-hard-light">
-            <div className="w-[206px] top-[11px] left-[50px] text-[45px] tracking-[-0.90px] absolute [font-family:'Work_Sans-Medium',Helvetica] font-medium text-white leading-[75px] whitespace-nowrap">
-              Logo
-            </div>
-
-            <nav className="absolute w-[837px] h-[55px] top-3 left-[271px]">
-              {navigationItems.map((item, index) => (
-                <div
-                  key={index}
-                  className={`absolute top-0 [font-family:'Work_Sans-Medium',Helvetica] font-medium text-3xl tracking-[-1.50px] leading-[75px] whitespace-nowrap ${
-                    index === 0
-                      ? "w-[102px] left-0 text-[#147866]"
-                      : index === 1
-                        ? "w-[205px] left-[151px] text-white"
-                        : index === 2
-                          ? "w-[206px] left-[400px] text-white"
-                          : "w-[180px] left-[649px] text-white"
-                  }`}
-                >
-                  {item.name}
-                </div>
-              ))}
-            </nav>
-
-            <div className="absolute w-[225px] h-[87px] top-[3px] left-[1165px]">
-              <div className="h-[87px] shadow-[0px_4px_4px_#00000040]">
-                <div className="w-[227px] h-[87px]">
-                  <div className="relative w-[225px] h-[87px]">
-                    <Button className="absolute w-[225px] h-[72px] top-[15px] left-0 bg-[#00572b] rounded-[9px] border border-solid border-[#595858] hover:bg-[#00572b]/90 h-auto">
-                      <div className="absolute w-[196px] top-0 left-[15px] [font-family:'Work_Sans-Medium',Helvetica] font-medium text-white text-3xl tracking-[-0.60px] leading-[100px] whitespace-nowrap">
-                        Green Credits
-                      </div>
-                    </Button>
-                  </div>
-                </div>
+          {/* Blog Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post, index) => (
+              <div key={post.id} className={index === 1 ? "md:transform md:-translate-y-8" : ""}>
+                <BlogCard {...post} />
               </div>
-            </div>
-          </header>
+            ))}
+          </div>
+
+          {/* Load More Button */}
+          <div className="text-center mt-16">
+            <Button variant="outline" size="lg" className="group">
+              Load More Articles
+              <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </Button>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <Card variant="gradient" className="text-center p-12">
+            <CardContent padding="none">
+              <div className="mb-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Stay Connected
+                </h3>
+                <p className="text-xl text-white/80">
+                  Get the latest insights delivered directly to your inbox
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl
+                           text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-500
+                           transition-all duration-200"
+                />
+                <Button variant="primary" size="lg">
+                  Subscribe
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
